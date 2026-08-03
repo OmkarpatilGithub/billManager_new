@@ -254,6 +254,13 @@ const  VignarthaBillManager = () => {
         }
     };
 
+    const clearAllBills = () => {
+        const confirmClear = window.confirm("Are you sure you want to remove ALL bill entries? This cannot be undone.");
+        if (confirmClear) {
+            setBills([]);
+        }
+    };
+
     const totalAmount = bills.reduce((sum, bill) => sum + Number(bill.amount), 0);
 
     const generatePDFFileName = () => {
@@ -541,9 +548,40 @@ const  VignarthaBillManager = () => {
                 </div>
 
                 <div style={{ background: 'white', borderRadius: '12px', padding: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', overflowX: 'auto' }}>
-                    <h2 style={{ color: '#2d3748', marginTop: '0', marginBottom: '24px', fontSize: '20px', fontWeight: '600' }}>
-                        Bill Entries
-                    </h2>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                        <h2 style={{ color: '#2d3748', margin: '0', fontSize: '20px', fontWeight: '600' }}>
+                            Bill Entries
+                        </h2>
+                        {bills.length > 0 && (
+                            <button
+                                onClick={clearAllBills}
+                                style={{
+                                    padding: '10px 16px',
+                                    background: '#fed7d7',
+                                    color: '#c53030',
+                                    border: 'none',
+                                    borderRadius: '8px',
+                                    fontSize: '14px',
+                                    fontWeight: '600',
+                                    cursor: 'pointer',
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    transition: 'all 0.2s'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.target.style.background = '#fc8181';
+                                    e.target.style.color = 'white';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.background = '#fed7d7';
+                                    e.target.style.color = '#c53030';
+                                }}
+                            >
+                                <Trash2 size={16} /> Clear All
+                            </button>
+                        )}
+                    </div>
                     
                     {bills.length > 0 ? (
                         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
