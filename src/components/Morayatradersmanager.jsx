@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Document, Page, Text, View, StyleSheet, PDFDownloadLink, Image } from '@react-pdf/renderer';
 import { Trash2, Download, Plus, ArrowLeft } from 'lucide-react';
@@ -63,9 +64,9 @@ const convertGroupToWords = (num, ones, teens, tens) => {
 };
 
 const pdfStyles = StyleSheet.create({
-  page: { 
-    padding: 20, 
-    fontFamily: 'Helvetica', 
+  page: {
+    padding: 20,
+    fontFamily: 'Helvetica',
     fontSize: 10,
     backgroundColor: '#ffffff'
   },
@@ -96,15 +97,15 @@ const pdfStyles = StyleSheet.create({
     color: '#e74c3c',
     marginBottom: 3
   },
-  header: { 
-    fontSize: 15, 
-    fontWeight: 'bold', 
-    color: '#1f2937', 
+  header: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#1f2937',
     marginBottom: 2
   },
-  subHeader: { 
-    fontSize: 8, 
-    color: '#555', 
+  subHeader: {
+    fontSize: 8,
+    color: '#555',
     marginBottom: 1,
     lineHeight: 1.3
   },
@@ -119,118 +120,110 @@ const pdfStyles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 2
   },
-  detailsRow: { 
-    flexDirection: 'row', 
-    fontSize: 9, 
-    justifyContent: 'space-between', 
+  detailsRow: {
+    flexDirection: 'row',
+    fontSize: 9,
+    justifyContent: 'space-between',
     marginBottom: 12,
     paddingBottom: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#cccccc'
   },
-  companyName: { 
-    fontSize: 9, 
-    marginBottom: 8, 
-    fontWeight: 'bold', 
+  companyName: {
+    fontSize: 9,
+    marginBottom: 8,
+    fontWeight: 'bold',
     color: '#1f2937'
   },
-  table: { 
-    display: 'table', 
+  table: {
+    display: 'table',
     width: '100%',
-    marginTop: 8, 
-    marginBottom: 12, 
-    borderStyle: 'solid', 
-    borderWidth: 1, 
+    marginTop: 8,
+    marginBottom: 12,
+    borderStyle: 'solid',
+    borderWidth: 1,
     borderColor: '#000000'
   },
-  // tableRow: { 
-  //   flexDirection: 'row', 
-  //   minHeight: 26,
-  //   borderBottomWidth: 1,
-  //   borderBottomColor: '#000000'
-  // }
-  tableRow: {  
-  flexDirection: 'row',
-  minHeight: 26,
-  borderBottomWidth: 1,
-  borderBottomColor: '#000000',
-  alignItems: 'stretch'   // ensures all cells same height
-}
-,
-  tableColHeaderSmall: { 
+  tableRow: {
+    flexDirection: 'row',
+    minHeight: 26,
+    borderBottomWidth: 1,
+    borderBottomColor: '#000000',
+    alignItems: 'stretch'
+  },
+  tableColHeaderSmall: {
     width: '8%',
     borderRightWidth: 1,
     borderRightColor: '#000000',
-    backgroundColor: '#f5f5f5', 
-    padding: 7, 
-    fontWeight: 'bold', 
-    fontSize: 8, 
+    backgroundColor: '#f5f5f5',
+    padding: 7,
+    fontWeight: 'bold',
+    fontSize: 8,
     color: '#1f2937',
     textAlign: 'center'
   },
-  tableColHeaderLarge: { 
+  tableColHeaderLarge: {
     width: '45%',
     borderRightWidth: 1,
     borderRightColor: '#000000',
-    backgroundColor: '#f5f5f5', 
-    padding: 7, 
-    fontWeight: 'bold', 
-    fontSize: 8, 
+    backgroundColor: '#f5f5f5',
+    padding: 7,
+    fontWeight: 'bold',
+    fontSize: 8,
     color: '#1f2937',
     textAlign: 'center'
   },
-tableColHeaderMedium: {  
-  width: '15.66%',
-  borderRightWidth: 1,
-  borderRightColor: '#000000',
-  backgroundColor: '#f5f5f5',
-  padding: 7,
-  fontWeight: 'bold',
-  fontSize: 8,
-  color: '#1f2937',
-  textAlign: 'center'
-}
-  ,
-  tableColSmall: { 
-    width: '8%',
-    borderRightWidth: 1,
-    borderRightColor: '#000000',
-    padding: 7, 
-    fontSize: 8,
-    textAlign: 'center'
-  },
-  tableColLarge: { 
-    width: '45%',
-    borderRightWidth: 1,
-    borderRightColor: '#000000',
-    padding: 7, 
-    fontSize: 8,
-    textAlign: 'left'
-  },
-  tableColMedium: { 
+  tableColHeaderMedium: {
     width: '15.66%',
     borderRightWidth: 1,
     borderRightColor: '#000000',
-    padding: 7, 
+    backgroundColor: '#f5f5f5',
+    padding: 7,
+    fontWeight: 'bold',
+    fontSize: 8,
+    color: '#1f2937',
+    textAlign: 'center'
+  },
+  tableColSmall: {
+    width: '8%',
+    borderRightWidth: 1,
+    borderRightColor: '#000000',
+    padding: 7,
     fontSize: 8,
     textAlign: 'center'
   },
-tableColAmount: {  
-  width: '15.66%',      // FIX: match header width
-  padding: 7,
-  fontSize: 8,
-  fontWeight: 'bold',
-  color: '#1f2937',
-  textAlign: 'right'
-},
-  footer: { 
-    marginTop: 12, 
+  tableColLarge: {
+    width: '45%',
+    borderRightWidth: 1,
+    borderRightColor: '#000000',
+    padding: 7,
+    fontSize: 8,
+    textAlign: 'left'
+  },
+  tableColMedium: {
+    width: '15.66%',
+    borderRightWidth: 1,
+    borderRightColor: '#000000',
+    padding: 7,
+    fontSize: 8,
+    textAlign: 'center'
+  },
+  tableColAmount: {
+    width: '15.66%',
+    padding: 7,
+    fontSize: 8,
+    fontWeight: 'bold',
+    color: '#1f2937',
+    textAlign: 'right'
+  },
+  footer: {
+    marginTop: 12,
     paddingTop: 10,
     borderTopWidth: 2,
     borderTopColor: '#000000',
-    fontSize: 9, 
-    textAlign: 'right', 
-    color: '#1f2937', 
+    fontSize: 9,
+    textAlign: 'right',
+    color: '#1f2937',
     fontWeight: 'bold'
   },
   totalAmount: {
@@ -239,15 +232,15 @@ tableColAmount: {
     marginBottom: 6,
     textAlign: 'right'
   },
-  signatureRow: { 
-    flexDirection: 'row', 
-    justifyContent: 'space-between', 
+  signatureRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 18,
     paddingTop: 12
   },
-  words: { 
-    fontSize: 8, 
-    textAlign: 'left', 
+  words: {
+    fontSize: 8,
+    textAlign: 'left',
     width: '60%',
     lineHeight: 1.4
   },
@@ -255,9 +248,9 @@ tableColAmount: {
     fontWeight: 'bold',
     marginBottom: 2
   },
-  sign: { 
-    fontSize: 8, 
-    width: '35%', 
+  sign: {
+    fontSize: 8,
+    width: '35%',
     textAlign: 'center',
     paddingTop: 25
   },
@@ -439,6 +432,17 @@ const MorayaTradersManager = () => {
     }
   };
 
+  // Clear all items after confirmation
+  const clearAllItems = () => {
+    const confirmClear = window.confirm(
+      "Are you sure you want to delete ALL items? This action cannot be undone."
+    );
+
+    if (confirmClear) {
+      setItems([]);
+    }
+  };
+
   const totalAmount = items.reduce((sum, item) => sum + item.itemTotal, 0);
 
   const generatePDFFileName = () => {
@@ -450,7 +454,7 @@ const MorayaTradersManager = () => {
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #059669 0%, #10b981 100%)', padding: '40px 20px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        
+
         {/* Header with Back Button */}
         <div style={{ marginBottom: '30px' }}>
           <Link to="/" style={{ textDecoration: 'none' }}>
@@ -640,11 +644,6 @@ const MorayaTradersManager = () => {
               <p style={{ margin: '0', color: '#1f2937', fontSize: '32px', fontWeight: '700' }}>₹ {totalAmount.toFixed(2)}</p>
             </div>
 
-            {/* <div style={{ marginBottom: '20px', padding: '16px', background: '#f0fdf4', borderRadius: '8px', borderLeft: '4px solid #059669' }}>
-              <p style={{ margin: '0 0 8px 0', color: '#6b7280', fontSize: '14px' }}>Estimate Number</p>
-              <p style={{ margin: '0', color: '#1f2937', fontSize: '28px', fontWeight: '700' }}>#{billNo}</p>
-            </div> */}
-
             {items.length > 0 && (
               <PDFDownloadLink
                 key={items.length}
@@ -680,9 +679,46 @@ const MorayaTradersManager = () => {
         </div>
 
         <div style={{ background: 'white', borderRadius: '12px', padding: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', overflowX: 'auto' }}>
-          <h2 style={{ color: '#1f2937', marginTop: '0', marginBottom: '24px', fontSize: '20px', fontWeight: '600' }}>
-            Items List
-          </h2>
+
+          {/* Items List heading and Clear All button */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '24px',
+            gap: '12px',
+            flexWrap: 'wrap'
+          }}>
+            <h2 style={{
+              color: '#1f2937',
+              margin: '0',
+              fontSize: '20px',
+              fontWeight: '600'
+            }}>
+              Items List
+            </h2>
+
+            {items.length > 0 && (
+              <button
+                onClick={clearAllItems}
+                style={{
+                  padding: '10px 16px',
+                  background: '#dc2626',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                <Trash2 size={16} /> Clear All
+              </button>
+            )}
+          </div>
 
           {items.length > 0 ? (
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
